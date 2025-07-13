@@ -1,0 +1,622 @@
+
+
+
+
+
+body {
+  margin: 0;
+  font-family: 'Coustard', serif;
+  scroll-behavior: smooth;
+  overflow: hidden; /* Evita scroll libre */
+}
+
+/* Base de secciones */
+.seccion {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+/* Primera pantalla */
+.body-inicial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('IMG/Vector.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Contenedor principal */
+.body-inicial .contenido {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido central */
+.body-inicial .contenido-centro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.body-inicial .contenido-centro h1 {
+  font-size: 6rem;
+  margin: 0;
+}
+
+.body-inicial .contenido-centro .arriba {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.body-inicial .contenido-centro .abajo {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.scroll-indicador {
+  font-size: 2rem;
+  margin-top: 2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Texto lateral */
+.texto-lateral {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2rem;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 1rem;
+  white-space: nowrap;
+  color: white;
+  z-index: 10;
+}
+
+.texto-lateral.izquierdo {
+  left: 0;
+}
+
+.texto-lateral.derecho {
+  right: 0;
+}
+
+/* Animación hacia arriba */
+.scroll-text.abajo-arriba {
+  animation: mover-abajo-arriba 10s linear infinite;
+}
+
+/* Animación hacia abajo */
+.scroll-text.arriba-abajo {
+  animation: mover-arriba-abajo 10s linear infinite;
+}
+
+@keyframes mover-arriba-abajo {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes mover-abajo-arriba {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*============================Menu Lateral============================*/
+.barra-lateral {
+  width: 200px;
+  background-color: #F2E9D4;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.barra-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.barra-lateral li {
+  margin: 10px 0;
+  cursor: pointer;
+  padding-left: 5px;
+  position: relative;
+}
+
+/* Estilo para elementos activos */
+.barra-lateral li.activo {
+  background-color: #3E4D6CD9;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Submenú oculto por defecto */
+.submenu-toggle {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.submenu-toggle .flecha {
+  display: inline-block;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+
+  font-size: 24px;
+  padding-left: 10%;
+}
+
+.submenu-toggle.abierto .flecha {
+  transform: rotate(-90deg); /* flechita gira al abrir */
+}
+
+.submenu {
+  margin-left: 15px;
+  padding-left: 10px;
+  border-left: 1px solid #ccc;
+  display: none;
+}
+
+.submenu li {
+  margin: 5px 0;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.submenu li.activo {
+  background-color: #3E4D6CD9;
+  color: white;
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==================== Segunda pantalla ====================*/
+/* Segunda pantalla */
+.body-secundario {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #F2E9D4;
+  overflow-x: hidden;  /* Oculta el scroll horizontal solamente */
+  overflow-y: hidden;  /* Oculta el scroll vertical solamente */
+}
+
+main.contenido-principal {
+  flex: 1;
+  padding: 0px;
+  overflow-y: auto;
+}
+
+.encabezado {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #F2E9D4;
+  z-index: 5;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 2rem;
+
+  
+  font-family: 'Lobster Two', cursive;
+}
+
+.contenido {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.cuerpo {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden; /* Elimina scroll de este contenedor */
+}
+
+
+/* === SECCIÓN ABOUT === */
+/* Sección principal sin scroll */
+.about-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 2rem;
+  background-color: #F2E9D4;
+}
+
+/* Título centrado */
+.TituloPresentacion {
+  text-align: center;
+}
+
+.TituloPresentacion h2 {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.8rem;
+  color: #3d3d64;
+  margin-bottom: 1rem;
+}
+
+/* Contenedor horizontal de texto + imagen */
+.contenido-about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  gap: 2rem;
+}
+
+/* Texto alineado a la izquierda */
+.textosPresentacion {
+  flex: 1 1 60%;
+  font-family: 'Sansation', sans-serif;
+  font-size: 1.1rem;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+/* Imagen a la derecha */
+.img-Presentacion {
+  flex: 1 1 10%;
+  max-width: 20%;
+  height: auto;
+  border: 4px solid #3E4D6C;
+  border-radius: 6px;
+}
+
+/* Footer centrado al fondo */
+.foother {
+  text-align: center;
+  padding: 1rem 0 0.5rem;
+}
+
+.titulopies {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.6rem;
+  color: #3d3d64;
+}
+
+/* === SECCIÓN ABOUT TELEFONOS === */
+@media (max-width: 768px) {
+  .contenido-about {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textosPresentacion, .img-Presentacion {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==================== GALERIA ====================*/
+.galeria-container {
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+/* Evita scroll del mouse en galería */
+.galeria-container {
+  overflow: hidden;
+  pointer-events: auto;
+}
+.galeria-grid {
+  overflow: hidden;
+}
+
+/* Bloquea el scroll del mouse solo dentro de galería */
+.galeria-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.galeria-grid img:hover {
+  transform: scale(1.05);
+}
+
+.galeria-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  flex-direction: column;
+}
+
+.galeria-overlay img {
+  max-width: 90%;
+  max-height: 80%;
+  box-shadow: 0 0 10px white;
+}
+
+.close-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-overlay {
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  gap: 2rem;
+}
+
+
+
+
+.galeria-container-carrusel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.galeria-carrusel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.galeria-carrusel img {
+  width: 400px; /* ajusta a tu gusto */
+  height: auto;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.galeria-carrusel img:hover {
+  transform: scale(1.05);
+}
+
+.galeria-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1;
+}
+
+.galeria-prev {
+  margin-right: 8px;
+
+  border-radius: 8px;
+}
+
+.galeria-next {
+  margin-left: 8px;
+
+  border-radius: 8px;
+}
+
+
+
+
+
+
+
+
+/*==================== IMAGENES ====================*/
+/* ========== Illustration ========== */
+.img-illustration.img-1{
+  width: auto;
+  height: 40%;
+}
+
+.img-illustration.img-2,
+.img-illustration.img-3 {
+  width: auto;
+  height: 20%;
+}
+.img-illustration.img-4,
+.img-illustration.img-5,
+.img-illustration.img-6 {
+  width: auto;
+  height: 15%;
+}
+
+.img-illustration.img-8,
+.img-illustration.img-11 {
+  width: auto;
+  height: 40%;
+}
+
+.img-illustration.img-7,
+.img-illustration.img-9,
+.img-illustration.img-10,
+.img-illustration.img-12 {
+  width: auto;
+  height: 20%;
+}
+
+/* ========== Picture Book ========== */
+.img-Picture.img-1,
+.img-Picture.img-2 {
+  width: 280px;
+  height: 360px;
+  object-fit: cover;
+}
+.img-Picture.img-3,
+.img-Picture.img-4,
+.img-Picture.img-5 {
+  width: 240px;
+  height: auto;
+}
+
+/* ========== Characters ========== */
+.img-Characters.img-1,
+.img-Characters.img-2,
+.img-Characters.img-3 {
+  width: 220px;
+  height: 280px;
+}
+.img-Characters.img-4,
+.img-Characters.img-5 {
+  width: 180px;
+  height: 250px;
+}
+.img-Characters.img-6,
+.img-Characters.img-7,
+.img-Characters.img-8 {
+  width: 150px;
+  height: auto;
+}
+
+/* ========== Sketches ========== */
+.img-Sketches.img-1,
+.img-Sketches.img-2,
+.img-Sketches.img-3 {
+  width: 260px;
+  height: auto;
+}
+.img-Sketches.img-4,
+.img-Sketches.img-5,
+.img-Sketches.img-6,
+.img-Sketches.img-7 {
+  width: 220px;
+  height: auto;
+}
+
+/* ========== Pattern ========== */
+.img-Pattern.img-1,
+.img-Pattern.img-2 {
+  width: 300px;
+  height: 300px;
+}
+.img-Pattern.img-3,
+.img-Pattern.img-4 {
+  width: 250px;
+  height: auto;
+}
+.img-Pattern.img-5,
+.img-Pattern.img-6 {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* ========== Web Design ========== */
+.img-Web.img-1,
+.img-Web.img-2,
+.img-Web.img-3,
+.img-Web.img-4 {
+  width: 800px;
+  height: auto;
+}
+.img-Web.img-5,
+.img-Web.img-6,
+.img-Web.img-7,
+.img-Web.img-8,
+.img-Web.img-9 {
+  width: 450px;
+  height: auto;
+}
