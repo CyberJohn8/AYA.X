@@ -18,8 +18,20 @@ window.addEventListener('wheel', (e) => {
 function scrollToSection(index) {
   isScrolling = true;
   sections[index].scrollIntoView({ behavior: 'smooth' });
+
+  // Mostrar u ocultar el menú lateral según la sección actual
+  const barraLateral = document.getElementById('barraLateral');
+  if (barraLateral) {
+    if (sections[index].classList.contains('body-secundario')) {
+      barraLateral.style.display = 'block';
+    } else {
+      barraLateral.style.display = 'none';
+    }
+  }
+
   setTimeout(() => isScrolling = false, 1000);
 }
+
 
 // === Mostrar/Ocultar secciones desde menú ===
 document.addEventListener('DOMContentLoaded', () => {
