@@ -266,6 +266,8 @@ body {
   background-color: #F2E9D4;
   overflow-x: hidden;
   overflow-y: hidden;
+
+  color: #3E4D6C;
 }
 
 
@@ -339,7 +341,7 @@ main .contenido-principal {
 .TituloPresentacion h2 {
   font-family: 'Coustard', sans-serif;
   font-size: 1.8rem;
-  color: #3d3d64;
+  color: #3E4D6C;
   margin-bottom: 1rem;
   font-weight: normal;
 }
@@ -358,7 +360,7 @@ main .contenido-principal {
   flex: 1 1 50%;
   font-family: 'Coustard', sans-serif;
   font-size: 1.1rem;
-  color: #2c2c2c;
+  color: #3E4D6C;
   line-height: 1.6;
   font-weight: normal;
 }
@@ -381,7 +383,7 @@ main .contenido-principal {
 .titulopies {
   font-family: 'Lobster Two', cursive;
   font-size: 1.6rem;
-  color: #3d3d64;
+  color: #3E4D6C;
 }
 
 /* === SECCIÓN ABOUT TELEFONOS === */
@@ -470,11 +472,11 @@ main .contenido-principal {
 .galeria-overlay img {
   max-width: 90%;
   max-height: 80%;
-  box-shadow: 0 0 10px white;
+  box-shadow: 0 0 5px #F2E9D4;
 
 
   border-radius: 10px;
-  background-color: white;
+  background-color: #F2E9D4;
 }
 
 .close-overlay {
@@ -497,13 +499,13 @@ main .contenido-principal {
 
 
 
-
 .galeria-container-carrusel {
   position: relative;
   width: 100%;
   overflow: hidden;
   margin: 20px 0;
 }
+
 
 .galeria-carrusel {
   display: flex;
@@ -512,38 +514,41 @@ main .contenido-principal {
   scroll-behavior: smooth;
   gap: 16px;
   padding: 10px;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+
+
+  max-width: 800px;
 }
 
 .galeria-carrusel::-webkit-scrollbar {
-  display: none; /* oculta scroll horizontal */
+  display: none;
 }
 
 .galeria-carrusel img {
   flex: 0 0 auto;
-  height: 250px; /* puedes ajustar esto si prefieres auto o max-height */
+  height: 250px;
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   transition: transform 0.3s;
   cursor: pointer;
+  scroll-snap-align: start;
 }
 
-.galeria-carrusel img:hover {
-  transform: scale(1.05);
-}
-
+/* === Botones sobrepuestos === */
 .galeria-btn {
-  background-color: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 50%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 28px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .galeria-prev {
@@ -553,6 +558,8 @@ main .contenido-principal {
 .galeria-next {
   right: 10px;
 }
+
+
 
 
 
