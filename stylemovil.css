@@ -265,3 +265,68 @@
 }
 
 
+/* ================== FORMATO TELÉFONO (1 imagen por carrusel) ================== */
+@media (max-width: 768px) {
+
+  /* Contenedor del carrusel */
+  .galeria-container-carrusel {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* oculta lo que se salga */
+  }
+
+  /* Carrusel: cada imagen ocupa todo el ancho */
+  .galeria-carrusel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* hace que se alinee la imagen al soltar scroll */
+    scroll-behavior: smooth;
+    width: 100%;
+  }
+
+  /* Cada imagen ocupa todo el viewport */
+  .galeria-carrusel img {
+    flex: 0 0 100%;         /* cada img ocupa el 100% del ancho del carrusel */
+    max-width: 100%;
+    max-height: 80vh;       /* límite de alto en móviles */
+    object-fit: contain;
+    margin: 0 auto;
+    scroll-snap-align: center; /* siempre se centra */
+  }
+
+  /* Botones del carrusel centrados verticalmente */
+  .galeria-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .galeria-prev {
+    left: 5px;
+  }
+
+  .galeria-next {
+    right: 5px;
+  }
+
+  /* Ajustes por categoría (opcional) */
+  .img-illustration,
+  .img-Picture,
+  .img-Characters,
+  .img-Sketches,
+  .img-Pattern,
+  .img-Web {
+    width: 100%;   /* que siempre ocupen todo el ancho */
+    height: auto;
+    max-height: 80vh;
+  }
+}
