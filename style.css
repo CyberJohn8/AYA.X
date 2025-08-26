@@ -1,0 +1,751 @@
+@font-face {
+  font-family: 'Lobster Two';
+  src: url('fonts/LobsterTwo-Regular.woff2') format('woff2'),
+       url('fonts/LobsterTwo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Lobster Two', cursive;
+}
+
+
+
+
+
+body {
+  margin: 0;
+  /*font-family: 'Coustard', serif;/**/
+  scroll-behavior: smooth;
+  overflow: hidden; /* Evita scroll libre */
+}
+
+/* Base de secciones */
+.seccion {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+/* Primera pantalla */
+.body-inicial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('IMG/Vector.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Fondo para Telefonos */
+@media (max-width: 769px) {
+  .body-inicial {
+    background-image: url('IMG/VectorTelefono.png');
+  }
+}
+
+/* Contenedor principal */
+.body-inicial .contenido {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido central */
+.body-inicial .contenido-centro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Titulo */
+.body-inicial .contenido-centro h1 {
+  font-size: 6rem;
+  margin: 0;
+}
+
+.body-inicial .contenido-centro img {
+  height: 150px;
+  width: auto;
+  margin: 0;
+
+  
+  /*filter: invert(1111111111.555555);/**/
+}
+
+/* Textos Titulo *
+.body-inicial .contenido-centro .arriba {
+  font-size: 1.2rem;
+
+  
+  margin-bottom: -1rem;
+}
+
+.body-inicial .contenido-centro .abajo {
+  font-size: 1rem;
+
+  
+  margin-top: -1rem;
+}/**/
+
+.scroll-indicador {
+  font-size: 2rem;
+  margin-top: 2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Texto lateral */
+.texto-lateral {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2rem;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 1rem;
+  white-space: nowrap;
+  color: white;
+  z-index: 10;
+}
+
+.texto-lateral.izquierdo {
+  left: 0;
+}
+
+.texto-lateral.derecho {
+  right: 0;
+}
+
+/* Animación hacia arriba */
+/* Contenedor que se mueve */
+.scroll-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-contenido {
+  display: inline-block;
+  animation: scroll-loop 10s linear infinite;
+}
+
+/* Animación vertical infinita (hacia arriba) */
+.texto-lateral.izquierdo .scroll-contenido {
+  animation-name: scroll-up;
+}
+
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); } /* Solo sube la mitad (contenido duplicado) */
+}
+
+/* Animación vertical infinita (hacia abajo) */
+.texto-lateral.derecho .scroll-contenido {
+  animation-name: scroll-down;
+}
+
+@keyframes scroll-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*============================Menu Lateral============================*/
+#barraLateral {
+  width: 200px;
+  background-color: #F2E9D4;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+  display: none; /* por defecto oculto, lo muestras con JS */
+}
+
+
+
+.barra-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.barra-lateral li {
+  margin: 10px 0;
+  cursor: pointer;
+  padding-left: 5px;
+  position: relative;
+}
+
+/* Estilo para elementos activos */
+.barra-lateral li.activo {
+  background-color: #3E4D6CD9;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Submenú oculto por defecto */
+.submenu-toggle {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.submenu-toggle .flecha {
+  display: inline-block;
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+
+  font-size: 24px;
+  padding-left: 10%;
+}
+
+.submenu-toggle.abierto .flecha {
+  transform: rotate(-90deg); /* flechita gira al abrir */
+}
+
+.submenu {
+  margin-left: 15px;
+  padding-left: 10px;
+  border-left: 1px solid #ccc;
+  display: none;
+}
+
+.submenu li {
+  margin: 5px 0;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.submenu li.activo {
+  background-color: #3E4D6CD9;
+  color: white;
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==================== Segunda pantalla ====================*/
+/* Segunda pantalla */
+.body-secundario {
+  display: flex;
+  flex-direction: row; /* ← cambia de column a row */
+  min-height: 100vh;
+  background-color: #F2E9D4;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  color: #3E4D6C;
+}
+
+
+main .contenido-principal {
+  flex: 1;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-left: 0; /* ← eliminar este margen */
+}
+
+
+/*ocultar el menu lateral de inicio*/
+
+.body-inicial .barra-lateral {
+  display: none !important;
+}
+
+#barraLateral {
+  display: none;
+}
+
+/**/
+.encabezado {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #F2E9D4;
+  z-index: 5;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 2rem;
+
+  
+  font-family: 'Lobster Two', cursive;
+}
+
+.contenido {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.cuerpo {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden; /* Elimina scroll de este contenedor */
+}
+
+
+/* === SECCIÓN ABOUT === */
+/* Sección principal sin scroll */
+.about-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 2rem;
+  background-color: #F2E9D4;
+}
+
+/* Título centrado */
+.TituloPresentacion {
+  text-align: center;
+}
+
+.TituloPresentacion h2 {
+  font-family: 'Coustard', sans-serif;
+  font-size: 1.8rem;
+  color: #3E4D6C;
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+/* Contenedor horizontal de texto + imagen */
+.contenido-about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  gap: 2rem;
+}
+
+/* Texto alineado a la izquierda */
+.textosPresentacion {
+  flex: 1 1 50%;
+  font-family: 'Coustard', sans-serif;
+  font-size: 1.1rem;
+  color: #3E4D6C;
+  line-height: 1.6;
+  font-weight: normal;
+}
+
+/* Imagen a la derecha */
+.img-Presentacion {
+  flex: 1 1 100%;
+  max-width: 20%;
+  height: 80%;
+  border: 4px solid #3E4D6C;
+  border-radius: 6px;
+}
+
+/* Footer centrado al fondo */
+.foother {
+  text-align: center;
+  padding: 1rem 0 0.5rem;
+}
+
+.titulopies {
+  font-family: 'Lobster Two', cursive;
+  font-size: 1.6rem;
+  color: #3E4D6C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==================== GALERIA ====================*/
+.galeria-container {
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+/* Evita scroll del mouse en galería */
+.galeria-container {
+  overflow: hidden;
+  pointer-events: auto;
+}
+.galeria-grid {
+  overflow: hidden;
+}
+
+/* Bloquea el scroll del mouse solo dentro de galería */
+.galeria-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.galeria-grid img:hover {
+  transform: scale(1.05);
+}
+
+.galeria-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3E4D6C;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  flex-direction: column;
+}
+
+.galeria-overlay img {
+  max-width: 90%;
+  max-height: 80%;
+  box-shadow: 0 0 5px #F2E9D4;
+
+
+  border-radius: 10px;
+  background-color: #F2E9D4;
+}
+
+.close-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-overlay {
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  gap: 2rem;
+}
+
+
+
+.galeria-container-carrusel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+
+.galeria-carrusel {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 16px;
+  padding: 10px;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+
+
+  max-width: 800px;
+}
+
+.galeria-carrusel::-webkit-scrollbar {
+  display: none;
+}
+
+.galeria-carrusel img {
+  flex: 0 0 auto;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+/* === Botones sobrepuestos === */
+.galeria-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 28px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.galeria-prev {
+  left: 10px;
+}
+
+.galeria-next {
+  right: 10px;
+}
+
+
+
+
+
+
+
+
+
+/*==================== IMAGENES ====================*/
+/* ========== Illustration ========== */
+.img-illustration.img-1{
+  width: auto;
+  height: 40%;
+}
+
+.img-illustration.img-2,
+.img-illustration.img-3 {
+  width: auto;
+  height: 20%;
+}
+.img-illustration.img-4,
+.img-illustration.img-5,
+.img-illustration.img-6 {
+  width: auto;
+  height: 15%;
+}
+
+.img-illustration.img-8,
+.img-illustration.img-11 {
+  width: auto;
+  height: 40%;
+}
+
+.img-illustration.img-7,
+.img-illustration.img-9,
+.img-illustration.img-10,
+.img-illustration.img-12 {
+  width: auto;
+  height: 20%;
+}
+
+/* ========== Picture Book ========== */
+.img-Picture.img-1,
+.img-Picture.img-2 {
+  width: 280px;
+  height: 360px;
+  object-fit: cover;
+}
+.img-Picture.img-3,
+.img-Picture.img-4,
+.img-Picture.img-5 {
+  width: 240px;
+  height: auto;
+}
+
+/* ========== Characters ========== */
+.img-Characters.img-1,
+.img-Characters.img-2,
+.img-Characters.img-3 {
+  width: 220px;
+  height: 280px;
+}
+.img-Characters.img-4,
+.img-Characters.img-5 {
+  width: 180px;
+  height: 250px;
+}
+.img-Characters.img-6,
+.img-Characters.img-7,
+.img-Characters.img-8 {
+  width: 150px;
+  height: auto;
+}
+
+/* ========== Sketches ========== */
+.img-Sketches.img-1,
+.img-Sketches.img-2,
+.img-Sketches.img-3 {
+  width: 260px;
+  height: auto;
+}
+.img-Sketches.img-4,
+.img-Sketches.img-5,
+.img-Sketches.img-6,
+.img-Sketches.img-7 {
+  width: 220px;
+  height: auto;
+}
+
+/* ========== Pattern ========== */
+.img-Pattern.img-1,
+.img-Pattern.img-2 {
+  width: 300px;
+  height: 300px;
+}
+.img-Pattern.img-3,
+.img-Pattern.img-4 {
+  width: 250px;
+  height: auto;
+}
+.img-Pattern.img-5,
+.img-Pattern.img-6 {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* ========== Web Design ========== */
+.img-Web.img-1,
+.img-Web.img-2,
+.img-Web.img-3,
+.img-Web.img-4 {
+  width: 800px;
+  height: auto;
+}
+.img-Web.img-5,
+.img-Web.img-6,
+.img-Web.img-7,
+.img-Web.img-8,
+.img-Web.img-9 {
+  width: 450px;
+  height: auto;
+}
+
+
+
+
+/* ==== CONTACTO ==== */
+.contacto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  gap: 15px;
+}
+
+.contacto-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #3E4D6C;
+}
+
+.contacto-container p {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contacto-container i {
+  font-size: 1.4rem;
+}
+
+.contacto-container a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contacto-container a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+/* === SECCIÓN ABOUT TELEFONOS === */
+@media (max-width: 768px) {
+  .contenido-about {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textosPresentacion, .img-Presentacion {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}/**/
+

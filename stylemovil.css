@@ -1,0 +1,267 @@
+
+/* Botón menú oculto por defecto */
+.menu-toggle {
+  display: none;
+  z-index: 500;
+}
+
+/* Solo visible en móviles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    background: #3E4D6C;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 20px;
+  }
+}
+
+/* ==================== DISEÑO PARA DISPOSITIVOS MÓVILES ==================== */
+@media (max-width: 768px) {
+
+  /* Ajustar primera pantalla */
+  .body-inicial .contenido-centro h1 {
+    font-size: 3rem; /* título más pequeño */
+  }
+
+  .body-inicial .contenido-centro img {
+    height: 100px;
+  }
+
+  .texto-lateral {
+    font-size: 0.8rem; /* texto lateral más pequeño */
+  }
+
+  /* Menú lateral convertido en menú superior desplegable */
+  #barraLateral {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 40%;
+    height: 100%;
+    background-color: #F2E9D4;
+    transition: left 0.3s ease;
+    z-index: 1999;
+    display: block; /* visible en móvil como drawer */
+  }
+
+  #barraLateral.activo {
+    left: 0;
+  }
+
+
+
+  /* Ajustar encabezado */
+  .encabezado {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .encabezado h1 {
+    font-size: 1.6rem;
+  }
+
+  /* Ajustar sección ABOUT */
+  .contenido-about {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .textosPresentacion {
+    font-size: 1rem;
+    text-align: justify;
+  }
+
+ 
+
+  /* Galerías en carrusel scrollable horizontal */
+  .galeria-carrusel {
+    gap: 10px;
+    padding: 5px;
+  }
+
+
+  /* Botones del carrusel más pequeños */
+  .galeria-btn {
+    font-size: 20px;
+    padding: 6px 10px;
+  }
+
+
+
+  .close-overlay {
+    font-size: 1.5rem;
+  }
+
+  /* Footer más compacto */
+  .titulopies {
+    font-size: 1.2rem;
+  }
+}
+
+/* ==== FORMATO PARA CELULARES ==== */
+@media (max-width: 768px) {
+
+  /* Centrar contenido en "About" */
+  .contenido-about {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contenido-about img {
+    max-width: 80%;
+    margin-top: 20px;
+  }
+
+  /* Centrar contenido en "Contact" */
+  #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  #contact p, 
+  #contact h1, 
+  #contact h2 {
+    max-width: 90%;
+    margin: 10px auto;
+  }
+
+  /* Corrige carruseles en móviles */
+  .galeria-container-carrusel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .galeria-carrusel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 12px;
+    padding: 10px;
+    width: 100%; /* evita que sea más ancho que el viewport */
+    box-sizing: border-box;
+  }
+
+  .galeria-carrusel img {
+    flex: 0 0 auto;
+    max-width: 80%; /* evita que las imágenes se salgan de pantalla */
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Botones del carrusel siempre visibles */
+  .galeria-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .galeria-prev {
+    left: 5px;
+  }
+
+  .galeria-next {
+    right: 5px;
+  }
+
+  
+
+  .barra-lateral {
+    display: none; /* oculta menú por defecto en móvil */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background: white;
+    z-index: 100;
+    padding: 20px;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  }
+
+  .barra-lateral.activo {
+    display: block;
+  }
+}
+
+/* En pantallas grandes el botón menú no aparece *
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}/**/
+
+
+
+
+/* ================== FORMATO TELÉFONO AJUSTADO ================== */
+@media (max-width: 768px) {
+
+  /* Ajuste general */
+  .galeria-carrusel img {
+    max-width: 90%;
+    max-height: 70vh;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  /* ========== Illustration (verticales largas) ========== */
+  .img-illustration {
+    max-width: 85%;
+    max-height: 60vh;
+  }
+
+  /* ========== Picture Book (portadas, se permiten más grandes) ========== */
+  .img-Picture {
+    max-width: 80%;
+    max-height: 75vh;
+  }
+
+  /* ========== Characters (figuras verticales) ========== */
+  .img-Characters {
+    max-width: 75%;
+    max-height: 55vh;
+  }
+
+  /* ========== Sketches (dibujos medianos) ========== */
+  .img-Sketches {
+    max-width: 85%;
+    max-height: 70vh;
+  }
+
+  /* ========== Pattern (cuadrados, se moderan un poco) ========== */
+  .img-Pattern {
+    max-width: 80%;
+    max-height: 65vh;
+  }
+
+  /* ========== Web Design (imágenes horizontales largas) ========== */
+  .img-Web {
+    max-width: 95%;
+    max-height: 80vh;
+  }
+}
+
+
